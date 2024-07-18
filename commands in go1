@@ -1,0 +1,36 @@
+go build -o MyMacApp main.go
+
+mkdir -p MyMacApp.app/Contents/MacOS
+mkdir -p MyMacApp.app/Contents/Resources
+
+mv MyMacApp MyMacApp.app/Contents/MacOS/
+
+Summary of Steps
+-Compile Go Code: go build -o MyMacApp main.go
+-Create App Structure: mkdir -p MyMacApp.app/Contents/{MacOS,Resources}
+-Move Executable: mv MyMacApp MyMacApp.app/Contents/MacOS/
+-Create Info.plist: Add metadata in Info.plist
+-Add Icon (Optional): Place icon in Resources and update Info.plist
+-Code Signing (Optional): Sign your app with a developer certificate
+-Verify Structure: Ensure correct directory structure
+-Run App: Double-click MyMacApp.app in Finder
+-Distribute App: Compress and distribute the app
+
+to DMG
+mkdir -p MyMacApp_DMG
+cp -R MyMacApp.app MyMacApp_DMG/
+
+NOT THIS=>
+hdiutil create -volname "MyMacApp" -srcfolder MyMacApp_DMG -ov -format UDZO MyMacApp.dmg READONLY
+use this=>
+hdiutil create -volname "MyMacApp" -srcfolder MyMacApp_DMG -ov -format UDRW MyMacApp.dmg WRITABLE
+
+hdiutil imageinfo MyMacApp.dmg INFO
+hdiutil attach MyMacApp.dmg
+
+# Customize the layout in Finder
+
+hdiutil detach /Volumes/MyMacApp
+hdiutil convert MyMacApp.dmg -format UDZO -o MyMacApp_ReadOnly.dmg
+
+CMD + J to see options
