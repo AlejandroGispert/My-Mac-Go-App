@@ -1,4 +1,5 @@
-<h1>Currency converter webpage converted to android app and mac native app, using Go</h1>
+<h1>CCatcher</h1>
+<h3>Currency converter webpage converted to android app and mac native app, using Go</h3>
 
 <img src="https://github.com/user-attachments/assets/acce3ef0-ec09-4d18-a3ef-eddb6d7b8e53" width="500"/>
 <img src="https://github.com/user-attachments/assets/5a767fa3-b1a5-40be-8230-2744d448d3bc" width="500"/>
